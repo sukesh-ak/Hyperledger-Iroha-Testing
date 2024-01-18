@@ -1,5 +1,5 @@
-# Installing Hyperledger Iroha v2 for Testing (DLT)
-Testing steps for Blockchain - Hyperledger Iroha v2 on Ubuntu
+# Installing Hyperledger Iroha v2 (DLT)
+Installing & Testing steps for Blockchain - Hyperledger Iroha v2 on Ubuntu
 
 ## What is Iroha?
 Iroha is a fully-featured blockchain ledger. With Iroha you can:
@@ -11,13 +11,13 @@ Iroha is a fully-featured blockchain ledger. With Iroha you can:
 * Use both permissioned and permission-less blockchain deployments
 
 ## What about Iroha 2?
-Iroha 2 is a complete re-write of Hyperledger Iroha in Rust. As of writing, the two projects are developed concurrently.
+Iroha 2 is a complete re-write of Hyperledger Iroha in Rust. These two projects are developed concurrently and compatible with each other.
 * Fault Tolerance
 * Minimalist Code Base
 * Flexibility
 * Smart Contracts - Iroha 2 supports two approaches:
   * Iroha Special Instructions (ISI)
-  * Web ASseMbly (WASM)
+  * Web Asembly (WASM)
 * Static and Dynamic Linking
 * Well Tested 
 
@@ -31,7 +31,7 @@ $ sudo apt-get install libssl-dev
 # To avoid linker errors during rust compile 
 $ sudo apt install build-essentials
 
-# To avoid compiler error unable to find OpenSSL on path
+# To avoid compiler error - unable to find OpenSSL on path
 $ sudo apt install pkg-config
 
 ```
@@ -63,7 +63,7 @@ $ sudo usermod -aG docker $USER
 $ sudo apt install docker-compose
 
 # Run specific version so that test config.json file works by default
-# It creates 4 different containers with ports 8080,8081,8082, 8083
+# This creates 4 different containers with ports 8080,8081,8082,8083
 $ docker-compose  -f docker-compose.stable.yml up
 
 # If you want to run docker containers in the background, use -d option
@@ -119,6 +119,36 @@ $ ./iroha_client_cli account list all
 # Now we can switch to this new account by making changes in the config.json
 # Update config.json with the PUBLIC_KEY, PRIVATE_KEY, and ACCOUNT_ID 
 
+# Register an asset called 'ghostcoin'
+$ ./iroha_client_cli asset register \  
+  --id="ghostcoin#ghost_town" \
+  --value-type=Quantity
+
+# Mint 100 quantity of 'ghostcoin'
+$ ./iroha_client_cli asset mint \  
+  --account="sukesh@ghost_town" \  
+  --asset="ghostcoin#ghost_town" \  
+  --quantity="100"
+
+# List and check the assets
+$ ./iroha_client_cli asset list all
+
+# How to transfer assets from one account to another
+$ ./iroha_client_cli asset transfer \  
+  --from "sukesh@ghost_town" \  
+  --to "account2@ghost_town" \ 
+  --asset-id "ghostcoin#ghost_town" \  
+  --quantity 5
+
+# Burning assets
+$ ./iroha_client_cli asset burn \  
+  --account="sukesh@ghost_town" \  
+  --asset="ghostcoin#ghost_town" \  
+  --quantity="10"
+
+
+# Monitor transaction events in another bash shell prompt
+$ ./iroha_client_cli events pipeline
 
 ```
 
