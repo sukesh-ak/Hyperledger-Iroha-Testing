@@ -1,5 +1,5 @@
 # Installing Hyperledger Iroha v2 (DLT)
-Installing & Testing steps for Blockchain - Hyperledger Iroha v2 on Ubuntu
+Installing & Testing steps for Blockchain ledger - Hyperledger Iroha v2 on Ubuntu
 
 ## What is Iroha?
 Iroha is a fully-featured blockchain ledger. With Iroha you can:
@@ -153,5 +153,6 @@ $ ./iroha_client_cli events pipeline
 ```
 
 ## References
+* Hyperledger Irohi 2 [Documentation](https://hyperledger.github.io/iroha-2-docs/)
 * Smart Contracts [Using ISI](https://hyperledger.github.io/iroha-2-docs/guide/blockchain/expressions.html)  
 * Smart Contracts [Using WASM](https://hyperledger.github.io/iroha-2-docs/guide/blockchain/wasm.html)
