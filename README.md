@@ -21,8 +21,8 @@ Iroha 2 is a complete re-write of Hyperledger Iroha in Rust. These two projects 
 * Static and Dynamic Linking
 * Well Tested 
 
+## Prerequisites
 ```bash
-# Prerequisites
 - Git
 - OpenSSL
 # Install OpenSSL dev library
