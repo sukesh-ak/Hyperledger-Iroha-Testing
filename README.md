@@ -1,4 +1,4 @@
-# Installing Hyperledger Iroha v2 (DLT)
+# How to install Hyperledger Iroha v2 (DLT)
 Installing & Testing steps for Blockchain ledger - Hyperledger Iroha v2 on Ubuntu
 
 ## What is Iroha?
